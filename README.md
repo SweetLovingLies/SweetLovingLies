@@ -13,6 +13,7 @@
 </tr>
 </table>
 
+<img src="assets/featured_title.svg" width="800" alt="featured files">
 
 <table>
 <tr><td><a href="https://github.com/SweetLovingLies/lotuspond"><img src="assets/proj_lpc.svg" width="395" alt="LPC"></a></td><td><a href="https://github.com/SweetLovingLies/Angler-Corner"><img src="assets/proj_anglercorner.svg" width="395" alt="Angler Corner"></a></td></tr>
