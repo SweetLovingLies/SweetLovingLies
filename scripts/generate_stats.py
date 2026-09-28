@@ -65,11 +65,10 @@ def buttons(w):
         if g == "x": out += f'<path d="M{c-4} 13L{c+4} 21M{c+4} 13L{c-4} 21" stroke="{INK}" stroke-width="2" stroke-linecap="round"/>'
         if g == "box": out += f'<rect x="{c-4}" y="14" width="8" height="8" rx="1" fill="none" stroke="{INK}" stroke-width="2"/>'
         if g == "min": out += f'<path d="M{c-4} 21H{c+4}" stroke="{INK}" stroke-width="2" stroke-linecap="round"/>'
-    x -= 10
-    for c in ("#9fe8ff", "#ffe08a", "#ffb3e1"):
-        x -= 18
-        out += f'<circle cx="{x+6}" cy="18" r="6" fill="{c}" stroke="#7b5cff" stroke-opacity=".45"/>'
     return out
+
+def dots():
+    return "".join(f'<circle cx="{22+i*19}" cy="20" r="6" fill="{c}" stroke="#7b5cff" stroke-opacity=".45"/>' for i, c in enumerate(("#ffb3e1", "#ffe08a", "#9fe8ff")))
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="GitHub stats">
 <defs><linearGradient id="tb" x1="0" x2="1"><stop offset="0" stop-color="#ffb3e1"/><stop offset=".55" stop-color="#b9a2ff"/><stop offset="1" stop-color="#9fe8ff"/></linearGradient>
@@ -77,12 +76,13 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewB
 <rect x="6" y="6" width="{W-8}" height="{H-8}" rx="10" fill="#7b5cff" fill-opacity=".35"/>
 <rect x="2" y="2" width="{W-8}" height="{H-8}" rx="10" fill="#f6ecff" stroke="#b69cff" stroke-width="2"/>
 <g clip-path="url(#clip)"><rect x="2" y="2" width="{W-8}" height="36" fill="url(#tb)"/><line x1="2" x2="{W-6}" y1="38" y2="38" stroke="#b69cff" stroke-width="2"/></g>
-<text x="16" y="25" font-family="{F}" font-size="14" font-weight="700" fill="{INK}">♪ stats.exe</text>
+{dots()}<text x="82" y="25" font-family="{F}" font-size="14" font-weight="700" fill="{INK}">ʚɞ stats.exe</text>
 <g transform="translate(-6,2)">{buttons(W)}</g>
 {rows}
 <rect x="24" y="128" width="352" height="10" rx="5" fill="#e4d6ff"/>
 <g clip-path="url(#bar)"><clipPath id="bar"><rect x="24" y="128" width="352" height="10" rx="5"/></clipPath>{bar}</g>
 {legend}
+<text x="376" y="160" text-anchor="end" font-family="{F}" font-size="12" fill="#d6349b">₍ᐢ⑅ᐢ₎</text>
 </svg>'''
 os.makedirs("assets", exist_ok=True)
 open("assets/stats.svg", "w").write(svg)
